@@ -44,6 +44,10 @@ transactions = [
     {"user": "bob", "amount": 50},
     {"user": "alice", "amount": 200}
 ]
+new_data = {"user": "alice", "amount": 100}
+
+modified_data = transactions.append(new_data)
+print (transactions)
 
 user_transaction_tracking = {}
 for transaction in transactions:
