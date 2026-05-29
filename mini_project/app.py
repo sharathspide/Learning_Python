@@ -44,7 +44,17 @@ class to_do:
 
     def update_one_todo(self):
         print("Updated the specific To_do")
-
+        user_getbyid, user_getbytitle = "",""
+        print("would you like to search by id or title:")
+        print("press 1 for get to_do by id \npress 2 for get to_do by title")
+        user_input = int(input("Press the respective number: "))
+        if user_input == 1:
+            user_getbyid = input("Enter the to_do id: ")
+        elif(user_input == 2):
+            user_getbytitle = input("Enter the to_do title: ")
+        data = act.action_items(user_getbyid, user_getbytitle)
+        data.get_one_record()
+        
     def delete_one_todo(self):
         print("Deleted the To_do")
 

@@ -28,6 +28,20 @@ class action_items:
         file = rep.json_file_handle(file_access_mode, modified_data)
         return file.write_to_json()
 
+    def patch_record(self):
+        record = self.__find_record(self.fetch_all_records())
+        if(record == {}):
+            return "No Data found"
+        elif(record["title"] == self.record_title):
+            
+            
+    def update_existing_record(self, new_data):
+        new_data["title"] = self.record_title
+        new_data["status"] = self.record_status
+        new_data["remark"] = self.record_remark
+        id = new_data["id"]
+        record = self.__find_record(self.fetch_all_records())
+
     def __mapdata(self):
         new_data = {}
         new_data["id"] = self.create_new_id()
@@ -56,7 +70,6 @@ class action_items:
     def __find_record(self, raw_data:list):
         for value in raw_data:
             if (self.record_id != "" and self.record_title == ""):
-                #7print(value)
                 print(self.record_id)
                 print(value["id"])
                 if value["id"] == int(self.record_id):
